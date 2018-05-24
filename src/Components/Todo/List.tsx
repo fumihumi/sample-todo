@@ -17,10 +17,6 @@ const Content = styled.div`
   padding: 40px 20px 40px 20px;
 `;
 
-interface State {
-  list: Todo[];
-}
-
 interface Props {
   list: Todo[];
 }
@@ -31,21 +27,9 @@ interface Todo {
   assigned: string;
 }
 
-export class List extends React.Component<Props, State> {
-  state: State = {
-    list: [
-      {
-        id: 1,
-        title: "テストTitle",
-        assigned: "@__mnc90"
-      },
-      { id: 2, title: "mnc Title", assigned: "@__mnc90" },
-      { id: 3, title: "Sample Title", assigned: "@sample" }
-    ]
-  };
-
+export class List extends React.Component<Props> {
   public render() {
-    const todoList = this.state.list.map(todo => {
+    const todoList = this.props.list.map(todo => {
       return (
         <Item
           key={todo.id}

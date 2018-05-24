@@ -1,6 +1,6 @@
 import * as React from "react";
 import "./App.css";
-import { List } from "./Components/Todo/List";
+import List from "./Containers/List";
 import { Detail } from "./Components/Todo/Detail";
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
