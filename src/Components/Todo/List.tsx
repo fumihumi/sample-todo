@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import { Item } from './Item'
+import { Link } from 'react-router-dom'
 
 
 const ContentWrapper = styled.div`
@@ -11,8 +12,8 @@ const ContentWrapper = styled.div`
 `;
 
 const Content = styled.div`
-  background: #e5faf7;
-  border: 1px solid #f2f2f2;
+  background: #fafafa;
+  border: 1px solid #e2e2e2;
   width: 800px;
   padding: 40px 20px 40px 20px;
 `;
@@ -31,16 +32,19 @@ export class List extends React.Component<Props> {
   public render() {
     const todoList = this.props.list.map(todo => {
       return (
-        <Item
-          key={todo.id}
-          id={todo.id}
-          title={todo.title}
-          assigned={todo.assigned}
-        />
+        <Link to={`/detail/${todo.id}`} style={{textDecoration: 'none'}}>
+          <Item
+            key={todo.id}
+            id={todo.id}
+            title={todo.title}
+            assigned={todo.assigned}
+          />
+        </Link>
       );
     });
     return (
       <ContentWrapper>
+        <h4 style={{color: '#999999'}}>TODO一覧</h4>
         <Content>{todoList}</Content>
       </ContentWrapper>
     );
