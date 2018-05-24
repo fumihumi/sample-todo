@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./App.css";
 import List from "./Containers/List";
-import { Detail } from "./Components/Todo/Detail";
+import Detail from "./Containers/Detail";
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 class App extends React.Component {
