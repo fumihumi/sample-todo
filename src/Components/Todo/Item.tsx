@@ -12,16 +12,14 @@ const TodoComponent = styled.div`
 interface Todo {
   id: number;
   title: string;
-  body: string;
   assigned: string;
 }
 
-export const Todo = ({ id, title, body, assigned }: Todo) => {
+export const Item = ({ id, title, assigned }: Todo) => {
   return (
     <TodoComponent>
       <div>{id}</div>
       <div>{title}</div>
-      <div>{body}</div>
       <div>{assigned}</div>
     </TodoComponent>
   );

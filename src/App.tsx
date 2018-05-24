@@ -1,64 +1,21 @@
 import * as React from "react";
-import styled from "styled-components";
 import "./App.css";
-import { Todo } from "./Todo";
+import { List } from "./Components/Todo/List";
+import { Detail } from "./Components/Todo/Detail";
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px;
-`;
-
-const Content = styled.div`
-  background: #e5faf7;
-  border: 1px solid #f2f2f2;
-  width: 800px;
-  padding: 40px 20px 40px 20px;
-`;
-
-interface State {
-  list: Todo[];
-}
-
-interface Todo {
-  id: number;
-  title: string;
-  body: string;
-  assigned: string;
-}
-
-class App extends React.Component<{}, State> {
-  state: State = {
-    list: [
-      {
-        id: 1,
-        title: "テストTitle",
-        body: "テスト Body",
-        assigned: "@__mnc90"
-      },
-      { id: 2, title: "mnc Title", body: "mnc Body", assigned: "@__mnc90" },
-      { id: 3, title: "Sample Title", body: "Sample Body", assigned: "@sample" }
-    ]
-  };
-
-  public render() {
-    const todoList = this.state.list.map(todo => {
-      return (
-        <Todo
-          key={todo.id}
-          id={todo.id}
-          title={todo.title}
-          body={todo.body}
-          assigned={todo.assigned}
-        />
-      );
-    });
+class App extends React.Component {
+  render() {
     return (
-      <ContentWrapper>
-        <Content>{todoList}</Content>
-      </ContentWrapper>
-    );
+      <BrowserRouter>
+        <Switch>
+          <Route exact={true} path="/" component={List} />
+          <Route exact={true} path="/detail/:id" render={({match: { params: { id } }}) => {
+            return <Detail id={id}/> 
+          }}/>
+        </Switch>
+      </BrowserRouter>
+      )
   }
 }
 
